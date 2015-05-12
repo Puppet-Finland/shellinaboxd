@@ -5,14 +5,12 @@
 #
 class shellinaboxd::install
 (
-    $status
-)
+    $ensure
+
+) inherits shellinaboxd::params
 {
-
-    include shellinaboxd::params
-
     package { 'shellinaboxd':
-        name => "${::shellinaboxd::params::package_name}",
-        ensure => $status,
+        ensure => $ensure,
+        name   => $::shellinaboxd::params::package_name,
     }
 }

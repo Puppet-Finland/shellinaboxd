@@ -1,0 +1,11 @@
+{
+  "name": "puppetfinland-shellinaboxd",
+  "version": "0.1.1",
+  "author": "Puppet-Finland team",
+  "license": "BSD license",
+  "summary": "Setup shellinaboxd",
+  "source": "https://github.com/Puppet-Finland/shellinaboxd.git",
+  "project_page": "https://github.com/Puppet-Finland/shellinaboxd",
+  "dependencies": [
+  ]
+}

@@ -6,7 +6,7 @@
 #
 # == Parameters
 #
-# [*status*]
+# [*ensure*]
 #   Presence of shellinaboxd. Either 'present' (default) or 'absent'.
 # [*allow_address_ipv4*]
 #   Allow connections from this IPv4 address/subnet. Use special value 'any' to 
@@ -26,21 +26,21 @@
 #
 class shellinaboxd
 (
-    $status = 'present',
+    $manage = 'yes',
+    $ensure = 'present',
     $allow_address_ipv4 = '127.0.0.1',
     $allow_address_ipv6 = '::1'
 )
 {
 
-# Rationale for this is explained in init.pp of the sshd module
-if hiera('manage_shellinaboxd', 'true') != 'false' {
+if $manage == 'yes' {
 
-    class { 'shellinaboxd::install':
-        status => $status,
+    class { '::shellinaboxd::install':
+        ensure => $ensure,
     }
 
-    class { 'shellinaboxd::packetfilter':
-        status => $status,
+    class { '::shellinaboxd::packetfilter':
+        ensure             => $ensure,
         allow_address_ipv4 => $allow_address_ipv4,
         allow_address_ipv6 => $allow_address_ipv6,
     }

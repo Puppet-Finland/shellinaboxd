@@ -10,7 +10,7 @@ class shellinaboxd::params {
             $package_name = 'shellinabox'
         }
         default: {
-            $package_name = 'shellinabox'
+            fail("Unsupported operating system ${::osfamily}")
         }
     }
 }
